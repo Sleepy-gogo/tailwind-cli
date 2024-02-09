@@ -1,19 +1,14 @@
 #!/usr/bin/env node
 
-import chalk from 'chalk';
-import chalkAnimation from 'chalk-animation';
 import inquirer from 'inquirer';
-
-import { doAnimation } from './lib/utils.js';
 import { simple, express, react } from './install-options/index.js';
+import { farewell, welcome } from './lib/message-utils.js';
+import chalk from 'chalk';
 
-async function welcome() {
-  await doAnimation(chalkAnimation.rainbow('Welcome to TailwindCSS CLI'));
-}
+const installOptions = [simple, express, react];
 
-async function menu() {
-  const installOptions = [simple, express, react];
-
+async function app() {
+  await welcome();
   const answers = await inquirer.prompt({
     message: `Choose the type of your ${chalk.cyan(
       'TailwindCSS'
@@ -22,13 +17,12 @@ async function menu() {
     type: 'list',
     choices: installOptions.map((option) => option.name),
   });
-
   const selectedInstallOption = installOptions.find(
     (option) => option.name === answers.instalation_type
   );
 
   await selectedInstallOption.action();
+  await farewell();
 }
 
-await welcome();
-await menu();
+await app();

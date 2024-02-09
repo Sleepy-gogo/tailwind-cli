@@ -2,10 +2,10 @@ import chalk from 'chalk';
 
 import {
   addTailwindDirectives,
-  doWithSpinner,
-  getCssPath,
+  generateFiles,
   installDependencies,
 } from '../lib/utils.js';
+import { doWithSpinner, getCssPath } from '../lib/message-utils.js';
 
 async function action() {
   const cssFilePath = await getCssPath();
@@ -19,9 +19,14 @@ async function action() {
     'Installing dependencies...',
     'Dependencies installed succesfully!'
   );
+  await doWithSpinner(
+    generateFiles.bind(null, ['postcss', 'tailwind']),
+    'Generating files...',
+    'Files generated succesfully!'
+  );
 }
 
 export default {
-  name: chalk.white('Just the files 🪛'),
+  name: chalk.white('Standard 🪛') + chalk.gray(' (Vanilla files)'),
   action,
 };
