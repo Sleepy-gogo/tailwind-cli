@@ -9,7 +9,8 @@
   ],
   "module": "index.js",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "license": "MIT",
   "author": {
     "name": "SleepyGogo"
   },
@@ -31,5 +32,9 @@
     "gradient-string": "^2.0.2",
     "inquirer": "^9.2.14",
     "nanospinner": "^1.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sleepy-gogo/tailwind-cli"
   }
 }
