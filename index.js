@@ -1,11 +1,17 @@
 #!/usr/bin/env node
 
 import inquirer from 'inquirer';
-import { simple, express, react } from './install-options/index.js';
+import {
+  simple,
+  express,
+  react,
+  vue,
+  svelte,
+} from './install-options/index.js';
 import { farewell, welcome } from './lib/message-utils.js';
 import chalk from 'chalk';
 
-const installOptions = [simple, express, react];
+const installOptions = [simple, express, react, vue, svelte];
 
 async function app() {
   await welcome();

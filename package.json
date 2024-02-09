@@ -1,15 +1,17 @@
 {
   "name": "@sleepygogo/tailwindcss-cli",
-  "description": "A CLI for easy TailwindCSS installation",
+  "description": "A CLI Tool for easy TailwindCSS installation",
   "keywords": [
     "tailwindcss",
+    "tailwind",
+    "tool",
     "cli",
     "installation",
     "easy"
   ],
   "module": "index.js",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "author": {
     "name": "SleepyGogo"
