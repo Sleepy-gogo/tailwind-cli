@@ -1,5 +1,8 @@
 <h1 align="center">TailwindCSS CLI Installer</h1>
 
+![imagen](https://github.com/Sleepy-gogo/tailwind-install/assets/62667318/2613ca1b-812c-4cc3-a397-6deed45784e6)
+
+
 This project has been made to facilitate the installation of TailwindCSS, creating files, and adding dependencies as needed. This has been fine-tuned for personal use, but contributions are welcome.
 
 ## Usage 📖
