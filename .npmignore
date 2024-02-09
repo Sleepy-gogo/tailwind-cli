@@ -1,0 +1,33 @@
+# Exclude development and configuration files
+.git
+.gitignore
+.editorconfig
+.eslintignore
+.eslintrc
+.prettierignore
+.prettierrc
+.npmrc
+yarn.lock
+bun.lockb
+package-lock.json
+
+# Exclude test files and directories
+__tests__
+tests
+test
+*.test.js
+*.spec.js
+jest.config.js
+karma.conf.js
+
+# Exclude build files and directories
+dist
+build
+coverage
+
+# Exclude unnecessary files and directories
+node_modules
+*.log
+.idea
+.vscode
+.DS_Store

@@ -1,8 +1,21 @@
 {
   "name": "@sleepygogo/tailwindcss-cli",
+  "description": "A CLI for easy TailwindCSS installation",
+  "keywords": [
+    "tailwindcss",
+    "cli",
+    "installation",
+    "easy"
+  ],
   "module": "index.js",
   "type": "module",
   "version": "0.0.1",
+  "author": {
+    "name": "SleepyGogo"
+  },
+  "bin": {
+    "tailwindcss-cli": "index.js"
+  },
   "scripts": {
     "start": "bun run index.js"
   },
