@@ -6,17 +6,17 @@ import {
   installDependencies,
   setTailwindConfig,
 } from '../lib/utils.js';
-import { doWithSpinner, getCssPath } from '../lib/message-utils.js';
+import { doWithSpinner, getFilePath } from '../lib/message-utils.js';
 
 async function action() {
-  const cssFilePath = await getCssPath();
+  const cssFilePath = await getFilePath('CSS file', './src/index.css');
   await doWithSpinner(
     addTailwindDirectives.bind(null, cssFilePath),
     'Adding Tailwind directives...',
     'Directives added succesfully!'
   );
   await doWithSpinner(
-    installDependencies,
+    installDependencies.bind(null, '-D tailwindcss postcss autoprefixer'),
     'Installing dependencies...',
     'Dependencies installed succesfully!'
   );
