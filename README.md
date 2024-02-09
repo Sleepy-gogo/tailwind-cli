@@ -34,7 +34,7 @@ This is mainly thought for Vite based projects. React frameworks as Next, Gatsby
 
 This is mainly thought for Vite based projects. Vue frameworks as Nuxt will be added in the future.
 
-- **Vue ready ✨**
+- **Svelte ready 🧡**
 
 This is mainly thought for Vite based projects. Svelte frameworks as SvelteKit will be added in the future.
 
@@ -45,8 +45,10 @@ Using this option will create the `tailwind.config.js` specially thought for Exp
 Running this command will generate a `tailwind.css` file right next to your main one. This is so you can compile the classes from that file onto your main one. It'll also add the command for doing so:
 
 ```json
-scripts: {
-  'build:css': 'postcss path/to/tailwind.css -o path/to/your-styles.css',
+{
+  "scripts": {
+    "build:css": "postcss path/to/tailwind.css -o path/to/your-styles.css"
+  }
 }
 ```
 
