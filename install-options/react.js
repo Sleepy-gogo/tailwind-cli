@@ -21,7 +21,7 @@ async function action() {
     'Dependencies installed succesfully!'
   );
   await doWithSpinner(
-    generateFiles.bind(null, ['postcss', 'tailwind']),
+    generateFiles.bind(null, ['postcss-es', 'tailwind']),
     'Generating files...',
     'Files generated succesfully!'
   );
