@@ -1,5 +1,5 @@
 {
-  "name": "tailwindcss-cli",
+  "name": "@sleepygogo/tailwindcss-cli",
   "module": "index.js",
   "type": "module",
   "version": "0.0.1",
