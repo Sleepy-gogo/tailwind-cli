@@ -1,11 +1,11 @@
 import chalk from 'chalk';
-
+import { getFilePath } from '../lib/prompts.js';
+import { doWithSpinner } from '../lib/message-utils.js';
 import {
   addTailwindDirectives,
   generateFiles,
-  installDependencies,
+  installDependencies
 } from '../lib/utils.js';
-import { doWithSpinner, getFilePath } from '../lib/message-utils.js';
 
 async function action() {
   const cssFilePath = await getFilePath('CSS file', './styles.css');
@@ -28,5 +28,5 @@ async function action() {
 
 export default {
   name: chalk.white('Standard 🪛') + chalk.gray(' (Vanilla files)'),
-  action,
+  action
 };

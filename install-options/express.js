@@ -1,21 +1,16 @@
 import chalk from 'chalk';
-
 import confirm from '@inquirer/confirm';
-
+import { detect } from 'detect-package-manager';
+import { getFilePath, getViewEngine } from '../lib/prompts.js';
 import {
   addScripts,
   addTailwindDirectives,
   generateFiles,
   generateTailwindCssPath,
   installDependencies,
-  setTailwindConfig,
+  setTailwindConfig
 } from '../lib/utils.js';
-import {
-  doWithSpinner,
-  getFilePath,
-  getViewEngine,
-} from '../lib/message-utils.js';
-import { detect } from 'detect-package-manager';
+import { doWithSpinner } from '../lib/message-utils.js';
 
 async function action() {
   const cssFilePath = await getFilePath('CSS file', './public/css/styles.css');
@@ -37,7 +32,7 @@ async function action() {
   );
   await doWithSpinner(
     addScripts.bind(null, {
-      'build:css': `postcss ${twPath} -o ${cssFilePath}`,
+      'build:css': `postcss ${twPath} -o ${cssFilePath}`
     }),
     'Adding css compiling scripts...',
     'Css compiling scripts added succesfully!'
@@ -54,7 +49,7 @@ async function action() {
   }
 
   const confirmation = await confirm({
-    message: 'Do you want add dev scripts for Tailwind compiling on save?',
+    message: 'Do you want add dev scripts for Tailwind compiling on save?'
   });
 
   if (!confirmation) {
@@ -74,7 +69,7 @@ async function action() {
     addScripts.bind(null, {
       dev: 'run-p dev:*',
       'dev:server': `nodemon ${indexPath}`,
-      'dev:watch-css': `watch -n 0.5 '${pm} run build:css' ${twPath}`,
+      'dev:watch-css': `watch -n 0.5 '${pm} run build:css' ${twPath}`
     }),
     'Adding scripts...',
     'Scripts added succesfully!'
@@ -83,5 +78,5 @@ async function action() {
 
 export default {
   name: chalk.blue('Express ready 💻'),
-  action,
+  action
 };

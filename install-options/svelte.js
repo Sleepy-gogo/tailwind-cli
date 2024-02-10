@@ -1,12 +1,12 @@
 import chalk from 'chalk';
-
+import { getFilePath } from '../lib/prompts.js';
+import { doWithSpinner } from '../lib/message-utils.js';
 import {
   addTailwindDirectives,
   generateFiles,
   installDependencies,
-  setTailwindConfig,
+  setTailwindConfig
 } from '../lib/utils.js';
-import { doWithSpinner, getFilePath } from '../lib/message-utils.js';
 
 async function action() {
   const cssFilePath = await getFilePath('CSS file', './src/app.css');
@@ -37,6 +37,6 @@ async function action() {
 }
 
 export default {
-  name: chalk.orange('Svelte ready 🧡'),
-  action,
+  name: chalk.hex('#FF8800')('Svelte ready 🧡'),
+  action
 };
