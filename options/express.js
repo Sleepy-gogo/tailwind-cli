@@ -76,7 +76,7 @@ async function action() {
 }
 
 export default {
-  name: 'Express ready 💻',
+  name: ' Express ready 💻',
   action,
   type: 'option'
 };

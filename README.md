@@ -28,7 +28,7 @@ Using any option of this category, will create the `tailwind.config.js` file fro
 
 - **React ready ⚛️**
 
-This is mainly thought for Vite based projects. React frameworks as Next, Gatsby, Remix will be added in the future.
+This is mainly thought for Vite based projects. React frameworks as Gatsby, or Remix will be added in the future.
 
 - **Vue ready ✨**
 
@@ -37,6 +37,10 @@ This is mainly thought for Vite based projects. Vue frameworks as Nuxt will be a
 - **Svelte ready 🧡**
 
 This is mainly thought for Vite based projects. Svelte frameworks as SvelteKit will be added in the future.
+
+### Next.js ready 🚀
+
+Using this option will create the `tailwind.config.js` already configured for Next.js projects found in [Using Next.js](https://tailwindcss.com/docs/guides/nextjs)'s installation guide. Option thought specially for projects created without Tailwind already added via the `create-next-app`.
 
 ### Express ready 💻
 
