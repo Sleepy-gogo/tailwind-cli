@@ -1,20 +1,30 @@
-import chalk from 'chalk';
-import confirm from '@inquirer/confirm';
-import { detect } from 'detect-package-manager';
-import { getFilePath, getViewEngine } from '../lib/prompts.js';
+import { binaryQuestion, getFilePath, getViewEngine } from '../lib/prompts.js';
+import { generateTailwindCssPath, getExpressScripts } from '../lib/utils.js';
+import { doWithSpinner } from '../lib/message-utils.js';
 import {
   addScripts,
   addTailwindDirectives,
   generateFiles,
-  generateTailwindCssPath,
   installDependencies,
   setTailwindConfig
-} from '../lib/utils.js';
-import { doWithSpinner } from '../lib/message-utils.js';
+} from '../lib/actions.js';
 
 async function action() {
   const cssFilePath = await getFilePath('CSS file', './public/css/styles.css');
+  const viewEngine = await getViewEngine();
+  const isESM = await binaryQuestion('Do you want to use ESM?');
+  const confirmation = await binaryQuestion(
+    'Do you also want add dev scripts for Tailwind compiling on save?'
+  );
+
+  let indexPath;
+  if (confirmation) {
+    indexPath = await getFilePath('Index file', './app.js');
+  }
+
+  const files = isESM ? ['postcss-es', 'tailwind-es'] : ['postcss', 'tailwind'];
   const twPath = generateTailwindCssPath(cssFilePath);
+
   await doWithSpinner(
     addTailwindDirectives.bind(null, twPath),
     'Adding Tailwind directives...',
@@ -26,7 +36,7 @@ async function action() {
     'Dependencies installed succesfully!'
   );
   await doWithSpinner(
-    generateFiles.bind(null, ['postcss', 'tailwind']),
+    generateFiles.bind(null, files),
     'Generating files...',
     'Files generated succesfully!'
   );
@@ -38,8 +48,6 @@ async function action() {
     'Css compiling scripts added succesfully!'
   );
 
-  const viewEngine = await getViewEngine();
-
   if (viewEngine !== 'none') {
     await doWithSpinner(
       setTailwindConfig.bind(null, [`./**/*.{html,${viewEngine}}`]),
@@ -47,10 +55,6 @@ async function action() {
       'Config set succesfully!'
     );
   }
-
-  const confirmation = await confirm({
-    message: 'Do you want add dev scripts for Tailwind compiling on save?'
-  });
 
   if (!confirmation) {
     return;
@@ -62,21 +66,17 @@ async function action() {
     'Dependencies installed succesfully!'
   );
 
-  const indexPath = await getFilePath('Index file', './app.js');
-  const pm = (await detect()) ?? 'npm';
+  const scripts = await getExpressScripts(indexPath, twPath);
 
   await doWithSpinner(
-    addScripts.bind(null, {
-      dev: 'run-p dev:*',
-      'dev:server': `nodemon ${indexPath}`,
-      'dev:watch-css': `watch -n 0.5 '${pm} run build:css' ${twPath}`
-    }),
+    addScripts.bind(null, scripts),
     'Adding scripts...',
     'Scripts added succesfully!'
   );
 }
 
 export default {
-  name: chalk.blue('Express ready 💻'),
-  action
+  name: 'Express ready 💻',
+  action,
+  type: 'option'
 };

@@ -1,15 +1,14 @@
-import chalk from 'chalk';
-import { getFilePath } from '../lib/prompts.js';
-import { doWithSpinner } from '../lib/message-utils.js';
 import {
   addTailwindDirectives,
   generateFiles,
   installDependencies,
   setTailwindConfig
-} from '../lib/utils.js';
+} from '../../lib/actions.js';
+import { doWithSpinner } from '../../lib/message-utils.js';
+import { getFilePath } from '../../lib/prompts.js';
 
 async function action() {
-  const cssFilePath = await getFilePath('CSS file', './src/app.css');
+  const cssFilePath = await getFilePath('CSS file', './src/index.css');
   await doWithSpinner(
     addTailwindDirectives.bind(null, cssFilePath),
     'Adding Tailwind directives...',
@@ -21,22 +20,21 @@ async function action() {
     'Dependencies installed succesfully!'
   );
   await doWithSpinner(
-    generateFiles.bind(null, ['postcss-es', 'tailwind']),
+    generateFiles.bind(null, ['postcss-es', 'tailwind-es']),
     'Generating files...',
     'Files generated succesfully!'
   );
   await doWithSpinner(
-    setTailwindConfig.bind(
-      null,
-      ['./index.html', './src/**/*.{svelte,js,ts,jsx,tsx}'],
-      true
-    ),
+    setTailwindConfig.bind(null, [
+      './index.html',
+      './src/**/*.{svelte,js,ts,jsx,tsx}'
+    ]),
     'Setting Tailwind config...',
     'Config set succesfully!'
   );
 }
 
 export default {
-  name: chalk.hex('#FF8800')('Svelte ready 🧡'),
+  name: 'Svelte ready 🧡',
   action
 };
