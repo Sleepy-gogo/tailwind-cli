@@ -8,7 +8,7 @@ import { doWithSpinner } from '../../lib/message-utils.js';
 import { getFilePath } from '../../lib/prompts.js';
 
 async function action() {
-  const cssFilePath = await getFilePath('CSS file', './src/index.css');
+  const cssFilePath = await getFilePath('CSS file', './src/style.css');
   await doWithSpinner(
     addTailwindDirectives.bind(null, cssFilePath),
     'Adding Tailwind directives...',

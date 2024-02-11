@@ -11,19 +11,13 @@
   ],
   "module": "index.js",
   "type": "module",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "license": "MIT",
   "author": {
     "name": "SleepyGogo"
   },
   "bin": {
     "tailwindcss-cli": "index.js"
-  },
-  "scripts": {
-    "start": "bun run index.js"
-  },
-  "devDependencies": {
-    "bun-types": "latest"
   },
   "dependencies": {
     "@inquirer/confirm": "^3.0.0",
