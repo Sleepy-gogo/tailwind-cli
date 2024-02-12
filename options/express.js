@@ -40,13 +40,6 @@ async function action() {
     'Generating files...',
     'Files generated succesfully!'
   );
-  await doWithSpinner(
-    addScripts.bind(null, {
-      'build:css': `postcss ${twPath} -o ${cssFilePath}`
-    }),
-    'Adding css compiling scripts...',
-    'Css compiling scripts added succesfully!'
-  );
 
   if (viewEngine !== 'none') {
     await doWithSpinner(
@@ -56,17 +49,22 @@ async function action() {
     );
   }
 
-  if (!confirmation) {
-    return;
+  if (confirmation) {
+    await doWithSpinner(
+      installDependencies.bind(null, '-D nodemon npm-run-all'),
+      'Installing script dependencies...',
+      'Dependencies installed succesfully!'
+    );
   }
 
-  await doWithSpinner(
-    installDependencies.bind(null, '-D nodemon npm-run-all'),
-    'Installing script dependencies...',
-    'Dependencies installed succesfully!'
+  const scripts = await getExpressScripts(
+    {
+      index: indexPath,
+      tw: twPath,
+      css: cssFilePath
+    },
+    confirmation
   );
-
-  const scripts = await getExpressScripts(indexPath, twPath);
 
   await doWithSpinner(
     addScripts.bind(null, scripts),
