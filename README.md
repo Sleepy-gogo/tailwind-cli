@@ -51,7 +51,7 @@ Running this command will generate a `tailwind.css` file right next to your main
 ```json
 {
   "scripts": {
-    "build:css": "postcss path/to/tailwind.css -o path/to/your-styles.css"
+    "build:css": "npx tailwindcss -i path/to/tailwind.css -o path/to/style.css"
   }
 }
 ```
@@ -60,4 +60,4 @@ It'll, also, ask if you want to also add quick scripts for tailwind's class comp
 
 - Install nodemon and npm-run-all
 
-- Replace the dev script, and make it so it compiles the classes automatically every 0.5 seconds. This can be changed to be even more frequent manually.
+- Create dev: scripts that whill run your applicacion, and tailwind's class compilation while you use the dev server using the --watch flag on Tailwindcss CLI. This is done for compatibility between OS's.

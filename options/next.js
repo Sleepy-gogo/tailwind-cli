@@ -45,7 +45,7 @@ async function action() {
 }
 
 export default {
-  name: ' NextJS ready 🚀',
+  name: '🚀 NextJS ready',
   action,
   type: 'option'
 };

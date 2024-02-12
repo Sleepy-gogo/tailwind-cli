@@ -31,7 +31,7 @@ async function action() {
 }
 
 export default {
-  name: `${chalk.blueBright('+')}Standard 🪛 ${chalk.gray('(Normal files)')}`,
+  name: `🪛 Standard ${chalk.gray('(Normal files)')}`,
   action,
   type: 'option'
 };
