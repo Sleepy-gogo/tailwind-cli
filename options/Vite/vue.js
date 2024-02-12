@@ -35,7 +35,7 @@ async function action() {
 }
 
 export default {
-  name: ' Vue ready ✨',
+  name: '✨ Vue ready',
   action,
   type: 'option'
 };
