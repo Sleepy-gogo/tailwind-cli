@@ -2,13 +2,13 @@
 
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { farewell, welcome } from './lib/message-utils.js';
+import { farewell } from './lib/message-utils.js';
 import { getOption } from './lib/prompts.js';
 import { getOptions } from './lib/utils.js';
 import chalk from 'chalk';
 
 async function app() {
-  await welcome();
+  console.clear();
   const __dirname = dirname(fileURLToPath(import.meta.url));
   const optionsPath = path.join(__dirname, 'options');
   const options = await getOptions(optionsPath);
