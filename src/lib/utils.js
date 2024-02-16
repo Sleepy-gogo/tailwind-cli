@@ -12,7 +12,9 @@ export function resolvePath(filePath) {
 
 export function generateTailwindCssPath(cssFilePath) {
   const cssDirectory = path.dirname(cssFilePath);
-  const tailwindCssPath = path.join(cssDirectory, 'tailwind.css');
+  const tailwindCssPath = path
+    .join(cssDirectory, 'tailwind.css')
+    .replaceAll('\\', '/');
 
   return tailwindCssPath;
 }
