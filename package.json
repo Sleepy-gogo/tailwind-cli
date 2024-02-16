@@ -17,7 +17,7 @@
     "name": "SleepyGogo"
   },
   "bin": {
-    "tailwindcss-cli": "index.js"
+    "tailwindcss-cli": "src/index.js"
   },
   "dependencies": {
     "@inquirer/confirm": "^3.0.0",
