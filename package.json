@@ -17,15 +17,14 @@
     "name": "SleepyGogo"
   },
   "bin": {
-    "tailwindcss-cli": "index.js"
+    "tailwindcss-cli": "src/index.js"
   },
   "dependencies": {
     "@inquirer/confirm": "^3.0.0",
     "chalk": "^5.3.0",
     "detect-package-manager": "^3.0.1",
     "inquirer": "^9.2.14",
-    "nanospinner": "^1.1.0",
-    "standard": "^17.1.0"
+    "nanospinner": "^1.1.0"
   },
   "eslintConfig": {
     "extends": "./node_modules/standard/eslintrc.json",
@@ -37,5 +36,13 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Sleepy-gogo/tailwind-cli.git"
+  },
+  "devDependencies": {
+    "mock-fs": "^5.2.0",
+    "standard": "^17.1.0",
+    "vitest": "^1.2.2"
+  },
+  "scripts": {
+    "test": "vitest"
   }
 }
