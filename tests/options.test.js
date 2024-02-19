@@ -1,18 +1,18 @@
 import { expect, test } from 'vitest';
 import { getOptions } from '../src/lib/utils.js';
-import mock from 'mock-fs';
 
-test('basic', async () => {
-  mock({
-    'test/options': {
-      'file1.js':
-        'export default { name: "option 1", action: () => "Action 1 works", type: "option"};',
-      'file2.js':
-        'export default { name: "option 2", action: () => "Action 2 works", type: "option"};'
-    }
-  });
+const options = await getOptions('tests/test-options');
 
-  const options = await getOptions('test/options');
+test('Loads all the available options', () => {
+  expect(options).toHaveLength(3);
+});
 
-  expect(options).toHaveLength(2);
+test('Loads all the available suboptions', () => {
+  const dirOption = options.find((option) => option.type === 'dir');
+  expect(dirOption.options).toHaveLength(1);
+});
+
+test('Option actions work', () => {
+  const option = options.find((option) => option.name === 'Option 1');
+  expect(option.action()).toBe('Action working');
 });
