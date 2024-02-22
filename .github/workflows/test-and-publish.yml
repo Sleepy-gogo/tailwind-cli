@@ -1,0 +1,60 @@
+name: Test and Publish
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  test_linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies and run tests on Linux
+        run: |
+          npm ci
+          npm test
+
+  test_windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies and run tests on Windows
+        run: |
+          npm ci
+          npm test
+
+  publish_to_npm:
+    needs: [test_linux, test_windows]
+    runs-on: ubuntu-latest
+    if: ${{ needs.test_linux.result == 'success' && needs.test_windows.result == 'success' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish
