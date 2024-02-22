@@ -1,11 +1,12 @@
 name: Test and Publish
 
-on:
-  release:
-    types: [created]
+on: pull_request:
+      types:
+        - closed
 
 jobs:
   test_linux:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -23,6 +24,7 @@ jobs:
         run: npm test
 
   test_windows:
+    if: github.event.pull_request.merged == true
     runs-on: windows-latest
     steps:
       - name: Checkout code
@@ -42,7 +44,7 @@ jobs:
   publish_to_npm:
     needs: [test_linux, test_windows]
     runs-on: ubuntu-latest
-    if: ${{ needs.test_linux.result == 'success' && needs.test_windows.result == 'success' }}
+    if: github.event.pull_request.merged == true && needs.test_linux.result == 'success' && needs.test_windows.result == 'success'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
