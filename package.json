@@ -38,6 +38,11 @@
     "url": "git+https://github.com/Sleepy-gogo/tailwind-cli.git"
   },
   "devDependencies": {
-    "standard": "^17.1.0"
+    "mock-fs": "^5.2.0",
+    "standard": "^17.1.0",
+    "vitest": "^1.2.2"
+  },
+  "scripts": {
+    "test": "vitest"
   }
 }
