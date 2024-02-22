@@ -26,15 +26,15 @@ Using this option, will create the `tailwind.config.js` and `postcss.config.js` 
 
 Using any option of this category, will create the `tailwind.config.js` file from [Using Vite](https://tailwindcss.com/docs/guides/vite) on TailwindCSS official docs, based on the framework choosen.
 
-- **⚛️ React ready**
+- **⚛️ React**
 
 This is mainly thought for Vite based projects. React frameworks as Gatsby, or Remix will be added in the future.
 
-- **✨ Vue ready**
+- **✨ Vue**
 
 This is mainly thought for Vite based projects. Vue frameworks as Nuxt will be added in the future.
 
-- **🧡 Svelte ready**
+- **🧡 Svelte**
 
 This is mainly thought for Vite based projects. Svelte frameworks as SvelteKit will be added in the future.
 
