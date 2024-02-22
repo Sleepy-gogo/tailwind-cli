@@ -1,4 +1,6 @@
 import { expect, test } from 'vitest';
+import mock from 'mock-fs';
+
 import {
   getOptions,
   generateTailwindCssPath,
@@ -28,6 +30,10 @@ test('Generates the correct path', () => {
 });
 
 test('Express scripts generated correctly', async () => {
+  mock({
+    'bun.lockb': ''
+  });
+
   const cssPath = './css/styles.css';
   const twPath = generateTailwindCssPath(cssPath);
 
@@ -44,9 +50,14 @@ test('Express scripts generated correctly', async () => {
   };
 
   expect(scripts).toMatchObject(expectedScripts);
+  mock.restore();
 });
 
 test('Express dev scripts generated correctly', async () => {
+  mock({
+    'bun.lockb': ''
+  });
+
   const cssPath = './css/styles.css';
   const twPath = generateTailwindCssPath(cssPath);
 
@@ -67,4 +78,5 @@ test('Express dev scripts generated correctly', async () => {
   };
 
   expect(scripts).toMatchObject(expectedScripts);
+  mock.restore();
 });
