@@ -1,6 +1,6 @@
 <h1 align="center">TailwindCSS CLI Installer</h1>
 
-![imagen](https://github.com/Sleepy-gogo/tailwind-install/assets/62667318/2613ca1b-812c-4cc3-a397-6deed45784e6)
+![imagen](https://github.com/Sleepy-gogo/tailwind-cli/assets/62667318/c88d88fc-b30b-46ef-ba24-6b35dde9bdcb)
 
 This project has been made to facilitate the installation of TailwindCSS, creating files, and adding dependencies as needed. This has been fine-tuned for personal use, but contributions are welcome.
 
@@ -18,7 +18,7 @@ Will ask you what kind of installation you need, and then create the files and i
 
 ## Supported installations ☄️
 
-### Standard 🪛
+### 🪛 Standard
 
 Using this option, will create the `tailwind.config.js` and `postcss.config.js` files found in [Using PostCSS](https://tailwindcss.com/docs/installation/using-postcss)'s installation guide on TailwindCSS official docs. Further modifications may be needed for your project needs and specifications.
 
@@ -26,23 +26,23 @@ Using this option, will create the `tailwind.config.js` and `postcss.config.js` 
 
 Using any option of this category, will create the `tailwind.config.js` file from [Using Vite](https://tailwindcss.com/docs/guides/vite) on TailwindCSS official docs, based on the framework choosen.
 
-- **React ready ⚛️**
+- **⚛️ React ready**
 
 This is mainly thought for Vite based projects. React frameworks as Gatsby, or Remix will be added in the future.
 
-- **Vue ready ✨**
+- **✨ Vue ready**
 
 This is mainly thought for Vite based projects. Vue frameworks as Nuxt will be added in the future.
 
-- **Svelte ready 🧡**
+- **🧡 Svelte ready**
 
 This is mainly thought for Vite based projects. Svelte frameworks as SvelteKit will be added in the future.
 
-### Next.js ready 🚀
+### 🚀 Next.js
 
 Using this option will create the `tailwind.config.js` already configured for Next.js projects found in [Using Next.js](https://tailwindcss.com/docs/guides/nextjs)'s installation guide. Option thought specially for projects created without Tailwind already added via the `create-next-app`.
 
-### Express ready 💻
+### 💻 Express
 
 Using this option will create the `tailwind.config.js` specially thought for Express projects using a view engine, as it'll ask which one you're using.
 
