@@ -36,5 +36,6 @@ async function action() {
 
 export default {
   name: '⚛️ React',
-  action
+  action,
+  type: 'option'
 };
