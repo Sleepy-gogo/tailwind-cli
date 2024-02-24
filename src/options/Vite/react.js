@@ -35,6 +35,7 @@ async function action() {
 }
 
 export default {
-  name: '⚛️ React ready',
-  action
+  name: '⚛️ React',
+  action,
+  type: 'option'
 };

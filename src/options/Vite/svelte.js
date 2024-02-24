@@ -35,6 +35,7 @@ async function action() {
 }
 
 export default {
-  name: '🧡 Svelte ready',
-  action
+  name: '🧡 Svelte',
+  action,
+  type: 'option'
 };
